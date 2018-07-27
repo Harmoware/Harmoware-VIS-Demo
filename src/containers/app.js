@@ -4,7 +4,7 @@ import {
   Container, connectToHarmowareVis,
   HarmoVisLayers, MovesLayer, DepotsLayer,
   MovesInput, DepotsInput, SimulationDateTime,
-  PauseButton, ForwardButton, ReverseButton, AddMinutesButton,
+  PauseButton, PlayButton, ForwardButton, ReverseButton, AddMinutesButton,
   ElapsedTimeRange, SpeedRange
 } from 'harmoware-vis';
 
@@ -13,26 +13,49 @@ const MAPBOX_TOKEN = process.env.MAPBOX_ACCESS_TOKEN; //mapbox.com から取得�
 class App extends Container {
 
   render() {
-    const { viewport, actions, routePaths, lightSettings,
-      animatePause, animateReverse, settime, secperhour, timeBegin, timeLength,
-      movesbase, movedData, clickedObject, depotsData } = this.props;
+    const { settime, timeBegin, timeLength, actions, clickedObject, depotsData,
+      secperhour, animatePause, animateReverse, getMoveOptionChecked, getDepotOptionChecked,
+      getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData } = this.props;
+
     return (
       <div>
         <div id="controller_area">
           <ul>
-            <li>運行データ<MovesInput actions={actions} /></li>
-            <li>停留所データ<DepotsInput actions={actions} /></li>
-            <li>{animatePause ?
-              <PlayButton actions={actions} /> :
-              <PauseButton actions={actions} />}</li>
-            <li>{animateReverse ?
-              <ForwardButton actions={actions} /> :
-              <ReverseButton actions={actions} />}</li>
-            <li><AddMinutesButton addMinutes={-5} actions={actions} /></li>
-            <li><AddMinutesButton addMinutes={5} actions={actions} /></li>
-            <li><SimulationDateTime timeBegin={timeBegin} settime={settime} /></li>
-            <li><ElapsedTimeRange settime={settime} timeLength={timeLength} actions={actions} /></li>
-            <li><SpeedRange secperhour={secperhour} actions={actions} /></li>
+            <li>
+              <span>運行データ</span>
+              <MovesInput actions={actions} />
+            </li>
+            <li>
+              <span>停留所データ</span>
+              <DepotsInput actions={actions} />
+            </li>
+            <li>
+              {animatePause ?
+                <PlayButton actions={actions} /> :
+                <PauseButton actions={actions} />
+              }&nbsp;
+            {animateReverse ?
+                <ForwardButton actions={actions} /> :
+                <ReverseButton actions={actions} />
+              }
+            </li>
+            <li>
+              <AddMinutesButton addMinutes={-10} actions={actions} />&nbsp;
+            <AddMinutesButton addMinutes={-5} actions={actions} />&nbsp;
+            <AddMinutesButton addMinutes={5} actions={actions} />&nbsp;
+            <AddMinutesButton addMinutes={10} actions={actions} />
+            </li>
+            <li>
+              <SimulationDateTime timeBegin={timeBegin} settime={settime} />
+            </li>
+            <li><span>経過時間</span>
+              <ElapsedTimeRange settime={settime} timeLength={timeLength} actions={actions} />
+              <span>{Math.floor(settime)}&nbsp;秒</span>
+            </li>
+            <li><span>スピード</span>
+              <SpeedRange secperhour={secperhour} actions={actions} />
+              <span>{secperhour}&nbsp;秒/時</span>
+            </li>
           </ul>
         </div>
 
@@ -41,7 +64,7 @@ class App extends Container {
             viewport={viewport} actions={actions}
             mapboxApiAccessToken={MAPBOX_TOKEN}
             layers={[
-              new MovesLayer({ routePaths, movesbase, movedData, clickedObject, actions, lightSettings}),
+              new MovesLayer({ routePaths, movesbase, movedData, clickedObject, actions, lightSettings }),
               new DepotsLayer({ depotsData, lightSettings, actions }),
             ]}
           />
