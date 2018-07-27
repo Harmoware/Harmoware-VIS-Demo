@@ -1,0 +1,30 @@
+{
+  "name": "harmoware-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --port 3030 --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "author": "steelydylan",
+  "license": "MIT",
+  "dependencies": {
+    "harmoware-vis": "git+https://github.com/Harmoware/Harmoware-VIS.git",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
