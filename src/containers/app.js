@@ -16,6 +16,7 @@ class App extends Container {
     const { settime, timeBegin, timeLength, actions, clickedObject, depotsData,
       secperhour, animatePause, animateReverse, getMoveOptionChecked, getDepotOptionChecked,
       getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData } = this.props;
+    const optionVisible = false;
 
     return (
       <div>
@@ -49,8 +50,8 @@ class App extends Container {
               <SimulationDateTime timeBegin={timeBegin} settime={settime} />
             </li>
             <li><span>経過時間</span>
-              <ElapsedTimeRange settime={settime} timeLength={timeLength} actions={actions} />
-              <span>{Math.floor(settime)}&nbsp;秒</span>
+              <ElapsedTimeRange settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />
+              <span>{Math.floor(settime - timeBegin)}&nbsp;秒</span>
             </li>
             <li><span>スピード</span>
               <SpeedRange secperhour={secperhour} actions={actions} />
@@ -64,8 +65,8 @@ class App extends Container {
             viewport={viewport} actions={actions}
             mapboxApiAccessToken={MAPBOX_TOKEN}
             layers={[
-              new MovesLayer({ routePaths, movesbase, movedData, clickedObject, actions, lightSettings }),
-              new DepotsLayer({ depotsData, lightSettings, actions }),
+              new MovesLayer({ routePaths, movesbase, movedData, clickedObject, actions, lightSettings, optionVisible }),
+              new DepotsLayer({ depotsData, lightSettings, actions, optionVisible }),
             ]}
           />
         </div>
