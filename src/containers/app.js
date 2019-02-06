@@ -1,11 +1,12 @@
 // app.js　mapboxを使用する場合のサンプル
 import React from 'react';
+import { FPSStats } from 'react-stats';
 import {
-  Container, connectToHarmowareVis,
-  HarmoVisLayers, MovesLayer, DepotsLayer,
+  Container, connectToHarmowareVis, ElapsedTimeValue, SpeedValue,
+  HarmoVisLayers, MovesLayer, DepotsLayer, NavigationButton,
   MovesInput, DepotsInput, SimulationDateTime,
   PauseButton, PlayButton, ForwardButton, ReverseButton, AddMinutesButton,
-  ElapsedTimeRange, SpeedRange
+  ElapsedTimeRange, SpeedRange, LoadingIcon
 } from 'harmoware-vis';
 
 const MAPBOX_TOKEN = process.env.MAPBOX_ACCESS_TOKEN; //mapbox.com から取得したAccesstoken
@@ -15,7 +16,7 @@ class App extends Container {
   render() {
     const { settime, timeBegin, timeLength, actions, clickedObject, depotsData,
       secperhour, animatePause, animateReverse, getMoveOptionChecked, getDepotOptionChecked,
-      getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData } = this.props;
+      getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData, loading } = this.props;
     const optionVisible = false;
 
     return (
@@ -47,15 +48,20 @@ class App extends Container {
             <AddMinutesButton addMinutes={10} actions={actions} />
             </li>
             <li>
+              <NavigationButton buttonType="compass" actions={this.props.actions} viewport={this.props.viewport} />&nbsp;
+              <NavigationButton buttonType="zoom-in" actions={this.props.actions} viewport={this.props.viewport} />&nbsp;
+              <NavigationButton buttonType="zoom-out" actions={this.props.actions} viewport={this.props.viewport} />
+            </li>
+            <li>
               <SimulationDateTime timeBegin={timeBegin} settime={settime} />
             </li>
             <li><span>経過時間</span>
               <ElapsedTimeRange settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />
-              <span>{Math.floor(settime - timeBegin)}&nbsp;秒</span>
+              <span><ElapsedTimeValue settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />&nbsp;秒</span>
             </li>
             <li><span>スピード</span>
               <SpeedRange secperhour={secperhour} actions={actions} />
-              <span>{secperhour}&nbsp;秒/時</span>
+              <span><SpeedValue secperhour={secperhour} actions={actions} />&nbsp;秒/時</span>
             </li>
           </ul>
         </div>
@@ -70,6 +76,12 @@ class App extends Container {
             ]}
           />
         </div>
+        <div id="footer_area">
+          <a href="http://www.city.sabae.fukui.jp/users/tutujibus/web-api/web-api.html" rel="noopener noreferrer" target="_blank">
+            「つつじバスロケーションWEB API」で取得したデータを使用しています。</a>
+          <FPSStats isActive />
+        </div>
+        <LoadingIcon loading={loading} />
       </div>
     );
   }
