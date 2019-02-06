@@ -1,6 +1,6 @@
 # harmoware-demo
 
-# Install & run
+## Install & run
 ```
 git clone https://github.com/Harmoware/Harmoware-VIS-Demo.git
 cd Harmoware-VIS-Demo
