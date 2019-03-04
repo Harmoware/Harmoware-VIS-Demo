@@ -14,59 +14,65 @@ const MAPBOX_TOKEN = process.env.MAPBOX_ACCESS_TOKEN; //mapbox.com から取得�
 class App extends Container {
 
   render() {
-    const { settime, timeBegin, timeLength, actions, clickedObject, depotsData,
+    const { settime, timeBegin, timeLength, actions, clickedObject, depotsData, inputFileName,
       secperhour, animatePause, animateReverse, getMoveOptionChecked, getDepotOptionChecked,
       getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData, loading } = this.props;
+    const { movesFileName, depotsFileName } = inputFileName;
     const optionVisible = false;
+    const nowrapstyle = { whiteSpace: 'nowrap' };
 
     return (
       <div>
-        <div id="controller_area">
-          <ul>
-            <li>
-              <span>運行データ</span>
-              <MovesInput actions={actions} />
+        <div className="harmovis_controller">
+          <ul className="list-group harmovis_controller__list">
+            <li className="harmovis_controller__list__item button_block">
+              <label htmlFor="MovesInput" className="harmovis_button">
+                運行データ<MovesInput actions={actions} id="MovesInput" style={{ display: 'none' }} />
+              </label>&nbsp;
+              <div style={nowrapstyle}>{movesFileName}</div>
             </li>
-            <li>
-              <span>停留所データ</span>
-              <DepotsInput actions={actions} />
+            <li className="harmovis_controller__list__item button_block">
+              <label htmlFor="DepotsInput" className="harmovis_button">
+                停留所データ<DepotsInput actions={actions} id="DepotsInput" style={{ display: 'none' }} />
+              </label>&nbsp;
+              <div style={nowrapstyle}>{depotsFileName}</div>
             </li>
-            <li>
+            <li className="harmovis_controller__list__item button_block">
               {animatePause ?
-                <PlayButton actions={actions} /> :
-                <PauseButton actions={actions} />
+                <PlayButton actions={actions} /> : <PauseButton actions={actions} />
               }&nbsp;
-            {animateReverse ?
-                <ForwardButton actions={actions} /> :
-                <ReverseButton actions={actions} />
+              {animateReverse ?
+                <ForwardButton actions={actions} /> : <ReverseButton actions={actions} />
               }
             </li>
-            <li>
-              <AddMinutesButton addMinutes={-10} actions={actions} />&nbsp;
-            <AddMinutesButton addMinutes={-5} actions={actions} />&nbsp;
-            <AddMinutesButton addMinutes={5} actions={actions} />&nbsp;
-            <AddMinutesButton addMinutes={10} actions={actions} />
+            <li className="harmovis_controller__list__item button_block">
+              <AddMinutesButton addMinutes={-5} actions={actions} />&nbsp;
+              <AddMinutesButton addMinutes={5} actions={actions} />
             </li>
-            <li>
+            <li className="harmovis_controller__list__item button_block">
+              <AddMinutesButton addMinutes={-10} actions={actions} />&nbsp;
+              <AddMinutesButton addMinutes={10} actions={actions} />
+            </li>
+            <li className="harmovis_controller__list__item button_block">
               <NavigationButton buttonType="compass" actions={this.props.actions} viewport={this.props.viewport} />&nbsp;
               <NavigationButton buttonType="zoom-in" actions={this.props.actions} viewport={this.props.viewport} />&nbsp;
               <NavigationButton buttonType="zoom-out" actions={this.props.actions} viewport={this.props.viewport} />
             </li>
-            <li>
+            <li className="harmovis_controller__list__item">
               <SimulationDateTime timeBegin={timeBegin} settime={settime} />
             </li>
-            <li><span>経過時間</span>
+            <li className="harmovis_controller__list__item">
+              <span>経過時間</span>&nbsp;<span><ElapsedTimeValue settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />&nbsp;秒</span>
               <ElapsedTimeRange settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />
-              <span><ElapsedTimeValue settime={settime} timeLength={timeLength} timeBegin={timeBegin} actions={actions} />&nbsp;秒</span>
             </li>
-            <li><span>スピード</span>
+            <li className="harmovis_controller__list__item">
+              <span>スピード</span>&nbsp;<span><SpeedValue secperhour={secperhour} actions={actions} />&nbsp;秒/時</span>
               <SpeedRange secperhour={secperhour} actions={actions} />
-              <span><SpeedValue secperhour={secperhour} actions={actions} />&nbsp;秒/時</span>
             </li>
           </ul>
         </div>
 
-        <div id="harmovis_area">
+        <div className="harmovis_area">
           <HarmoVisLayers
             viewport={viewport} actions={actions}
             mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -76,7 +82,7 @@ class App extends Container {
             ]}
           />
         </div>
-        <div id="footer_area">
+        <div className="harmovis_footer" id="footer_area">
           <a href="http://www.city.sabae.fukui.jp/users/tutujibus/web-api/web-api.html" rel="noopener noreferrer" target="_blank">
             「つつじバスロケーションWEB API」で取得したデータを使用しています。</a>
           <FPSStats isActive />

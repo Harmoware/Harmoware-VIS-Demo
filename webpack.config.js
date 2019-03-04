@@ -20,8 +20,14 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel-loader',
       include: [resolve(__dirname, './src'), resolve(__dirname, './node_modules/mapbox-gl/js/')]
-    }]
-  },
+    }, {
+      test: /\.scss$/,
+      use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+      ]
+    }]},
 
   resolve: {
     alias: {
