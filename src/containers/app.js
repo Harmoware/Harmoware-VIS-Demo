@@ -19,7 +19,6 @@ class App extends Container {
       getOptionChangeChecked, viewport, routePaths, lightSettings, movesbase, movedData, loading } = this.props;
     const { movesFileName, depotsFileName } = inputFileName;
     const optionVisible = false;
-    const nowrapstyle = { whiteSpace: 'nowrap' };
 
     return (
       <div>
@@ -27,15 +26,15 @@ class App extends Container {
           <ul className="list-group harmovis_controller__list">
             <li className="harmovis_controller__list__item button_block">
               <label htmlFor="MovesInput" className="harmovis_button">
-                運行データ<MovesInput actions={actions} id="MovesInput" style={{ display: 'none' }} />
+                運行データ<MovesInput actions={actions} id="MovesInput" className="non_display" />
               </label>&nbsp;
-              <div style={nowrapstyle}>{movesFileName}</div>
+              <div className="nowrap">{movesFileName}</div>
             </li>
             <li className="harmovis_controller__list__item button_block">
               <label htmlFor="DepotsInput" className="harmovis_button">
-                停留所データ<DepotsInput actions={actions} id="DepotsInput" style={{ display: 'none' }} />
+                停留所データ<DepotsInput actions={actions} id="DepotsInput" className="non_display" />
               </label>&nbsp;
-              <div style={nowrapstyle}>{depotsFileName}</div>
+              <div className="nowrap">{depotsFileName}</div>
             </li>
             <li className="harmovis_controller__list__item button_block">
               {animatePause ?
