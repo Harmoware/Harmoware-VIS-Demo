@@ -15,7 +15,7 @@ class App extends Container {
     return (
       <div>
         <div className="harmovis_controller">
-          <ul className="list-group harmovis_controller__list">
+          <ul className="harmovis_controller__list">
             <li className="harmovis_controller__list__item button_block">
               <label htmlFor="MovesInput" className="harmovis_button">
                 Operation data<MovesInput actions={actions} id="MovesInput"
