@@ -15,13 +15,14 @@ class App extends Container {
     return (
       <div>
         <div className="harmovis_controller">
-          <ul className="harmovis_controller__list">
-            <li className="harmovis_controller__list__item button_block">
-              <label htmlFor="MovesInput" className="harmovis_button">
-                Operation data<MovesInput actions={actions} id="MovesInput"
-                className="non_display" />
-              </label>&nbsp;
-              <div className="white_space_nowrap">{movesFileName}</div>
+          <ul className="flex_list">
+            <li className="flex_row">
+              <div className="harmovis_input_button_column">
+              <label htmlFor="MovesInput">
+                Operation data<MovesInput actions={actions} id="MovesInput" />
+              </label>
+              <div>{movesFileName}</div>
+              </div>
             </li>
           </ul>
         </div>
