@@ -3,7 +3,7 @@ import {
   Container, connectToHarmowareVis, HarmoVisLayers, MovesLayer, MovesInput
 } from 'harmoware-vis';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoieW11Y3lzdGsiLCJhIjoiY2oxdmhhbmd0MDAwYjM4bXd1YWVodWNrcCJ9.aWxoDc0UXMVGB96b82GFKQ'; //Acquire Mapbox accesstoken
+const MAPBOX_TOKEN = 'xxxxxxxxxx'; //Acquire Mapbox accesstoken
 
 class App extends Container {
   render() {
