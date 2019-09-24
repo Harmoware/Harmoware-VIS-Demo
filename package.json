@@ -14,7 +14,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
-    "harmoware-vis": "^1.1.4",
+    "harmoware-vis": "^1.2.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
