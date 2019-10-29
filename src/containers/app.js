@@ -8,7 +8,7 @@ const MAPBOX_TOKEN = 'xxxxxxxxxx'; //Acquire Mapbox accesstoken
 class App extends Container {
   render() {
     const { actions, clickedObject, inputFileName, viewport,
-      routePaths, lightSettings, movesbase, movedData } = this.props;
+      routePaths, movesbase, movedData } = this.props;
     const { movesFileName } = inputFileName;
     const optionVisible = false;
 
@@ -32,7 +32,7 @@ class App extends Container {
             mapboxApiAccessToken={MAPBOX_TOKEN}
             layers={[
               new MovesLayer({ routePaths, movesbase, movedData,
-                clickedObject, actions, lightSettings, optionVisible }),
+                clickedObject, actions, optionVisible }),
             ]}
           />
         </div>
