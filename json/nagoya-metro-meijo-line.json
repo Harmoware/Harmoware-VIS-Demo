@@ -1,4 +1,4 @@
-[{"departuretime":1551575400,"arrivaltime":1551578280,"operation":[
+[{"operation":[
     {"position":[136.945255,35.190691,0],"elapsedtime":1551575400,"name":"Nagoya Dome-mae Yada"},
     {"position":[136.936864,35.191591,0],"elapsedtime":1551575460,"name":"Ozone"},
     {"position":[136.929784,35.195934,0],"elapsedtime":1551575520,"name":"Heian-dori"},
