@@ -21,4 +21,4 @@ Refer to [github](https://github.com/Harmoware/Harmoware-VIS "Harmoware-VIS gith
 Refer to [gitbook](https://harmoware-vis.gitbook.io/ "Harmoware-VIS Document").
 
 ## License
-This project is licensed under the [MIT License](https://github.com/Harmoware/Harmoware-VIS-Demo/blob/master/LICENSE).
+This project is licensed under the [Apache License 2.0](https://github.com/Harmoware/Harmoware-VIS-Demo/blob/master/LICENSE).
