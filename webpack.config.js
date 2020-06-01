@@ -1,4 +1,5 @@
 const resolve = require('path').resolve;
+const webpack = require('webpack');
 module.exports = {
   output: {
     path: __dirname,
@@ -15,5 +16,8 @@ module.exports = {
       test: /\.scss$/,
       use: ["style-loader", "css-loader", "sass-loader"]
     }]
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])
+  ]
 };
