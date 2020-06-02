@@ -3,7 +3,8 @@ import {
   Container, connectToHarmowareVis, HarmoVisLayers, MovesLayer, MovesInput
 } from 'harmoware-vis';
 
-const MAPBOX_TOKEN = 'xxxxxxxxxx'; //Acquire Mapbox accesstoken
+// const MAPBOX_TOKEN = 'xxxxxxxxxx' //  You may put mapbox_token here.
+const MAPBOX_TOKEN = process.env.MAPBOX_ACCESS_TOKEN; //Acquire Mapbox access token from environment var.
 
 class App extends Container {
   render() {
