@@ -9,7 +9,7 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      include: [resolve(__dirname, './src')],
+      include: [resolve(__dirname), resolve(__dirname, './src')],
       query: { "presets": ["@babel/react"] }
     }, {
       test: /\.scss$/,
