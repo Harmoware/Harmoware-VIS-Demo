@@ -10,11 +10,11 @@
   "author": "harmoware-demo",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-react": "^7.12.10",
+    "@babel/core": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
-    "css-loader": "^5.0.1",
-    "harmoware-vis": "^1.6.34",
+    "css-loader": "^5.0.2",
+    "harmoware-vis": "^1.6.36",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -22,8 +22,8 @@
     "redux": "^4.0.5",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^4.4.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   }
 }
