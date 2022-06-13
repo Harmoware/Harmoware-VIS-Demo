@@ -15,7 +15,7 @@
     "@reduxjs/toolkit": "1.8.1",
     "babel-loader": "8.2.5",
     "css-loader": "5.2.7",
-    "harmoware-vis": "1.8.13",
+    "harmoware-vis": "1.8.14",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-redux": "8.0.2",
