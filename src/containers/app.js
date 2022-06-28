@@ -13,18 +13,20 @@ const App = (props)=>{
 
   return (
     <Container {...props}>
-      <div className="harmovis_controller">
-        <ul className="flex_list">
-          <li className="flex_row">
-            <div className="harmovis_input_button_column">
-            <label htmlFor="MovesInput">
-              Operation data<MovesInput actions={actions} id="MovesInput" />
-            </label>
-            <div>{movesFileName}</div>
-            </div>
-          </li>
-        </ul>
-      </div>
+      {React.useMemo(()=>
+        <div className="harmovis_controller">
+          <ul className="flex_list">
+            <li className="flex_row">
+              <div className="harmovis_input_button_column">
+              <label htmlFor="MovesInput">
+                Operation data<MovesInput actions={actions} id="MovesInput" />
+              </label>
+              <div>{movesFileName}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      ,[movesFileName])}
       <div className="harmovis_area">
         <HarmoVisLayers
           viewport={viewport} actions={actions}
